@@ -204,6 +204,24 @@ table.subtable th { background: #f4f6f9; font-size: 12px; }
 .login-form input { background: #eef4f9; border-color: #d6e2ec; padding: 12px; border-radius: 7px; }
 .login-submit { width: 100%; padding: 12px; font-size: 15px; background: #39678f; border-color: #39678f; margin-top: 8px; border-radius: 7px; }
 .login-submit:hover { background: #2e5578; }
+.quick-login { margin: 26px 0 40px; }
+.quick-login-title {
+  display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 12.5px;
+  margin-bottom: 12px;
+}
+.quick-login-title::before, .quick-login-title::after {
+  content: ''; flex: 1; border-top: 1px dashed var(--border);
+}
+.quick-login-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.quick-login-btn {
+  border: 1px solid var(--border); background: #fbfdfe; border-radius: 7px;
+  padding: 8px 10px; cursor: pointer; font-family: inherit; text-align: center;
+  display: flex; flex-direction: column; gap: 2px; align-items: center;
+}
+.quick-login-btn:hover { background: var(--blue-50); border-color: #9cc4e8; }
+.quick-login-btn:disabled { opacity: .5; cursor: not-allowed; }
+.quick-login-btn b { color: #2e5578; font-size: 12.5px; }
+.quick-login-btn span { color: var(--muted); font-size: 11px; }
 @media (max-width: 900px) {
   .login-hero { display: none; }
 }

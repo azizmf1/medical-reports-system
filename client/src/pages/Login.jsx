@@ -26,6 +26,28 @@ export default function Login() {
     }
   };
 
+  // Demo convenience: one-click sign-in with a seed user.
+  const QUICK_USERS = [
+    ['dataentry', 'role_data_entry'],
+    ['checker', 'role_checker'],
+    ['sysmanager', 'role_system_manager'],
+    ['sysadmin', 'role_sys_admin_manager'],
+    ['builder', 'role_report_builder'],
+    ['operations', 'role_operations'],
+  ];
+  const quickLogin = async (uname) => {
+    setBusy(true); setError(null);
+    setUsername(uname); setPassword('Passw0rd!');
+    try {
+      await login(uname, 'Passw0rd!');
+      navigate('/');
+    } catch (err) {
+      setError(err);
+    } finally {
+      setBusy(false);
+    }
+  };
+
   return (
     <div className="login-split">
       {/* Form side — appears on the right in RTL (first flex child) */}
@@ -44,6 +66,19 @@ export default function Login() {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
           </label>
           <button className="btn login-submit" disabled={busy}>{t('login_button')}</button>
+
+          <div className="quick-login">
+            <div className="quick-login-title"><span>{t('quick_login')}</span></div>
+            <div className="quick-login-grid">
+              {QUICK_USERS.map(([uname, roleKey]) => (
+                <button key={uname} type="button" className="quick-login-btn" disabled={busy}
+                  onClick={() => quickLogin(uname)}>
+                  <b>{t(roleKey)}</b>
+                  <span dir="ltr">{uname}</span>
+                </button>
+              ))}
+            </div>
+          </div>
         </form>
       </div>
 
