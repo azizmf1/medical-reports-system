@@ -55,7 +55,7 @@ export default function Layout() {
   return (
     <div className="app">
       <aside className="sidebar">
-        <div className="brand">{t('app_title')}</div>
+        <div className="brand"><span className="mark">✚</span><span>{t('app_title')}</span></div>
         <nav>
           {(NAV[user.role] || []).map(([to, key]) => (
             <NavLink key={to} to={to}>{t(key)}</NavLink>

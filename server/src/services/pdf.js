@@ -41,21 +41,21 @@ function buildHtml(report, qrDataUrl, checkerName) {
     @page { margin: 20mm 15mm; }
     body { font-family: 'Noto Sans', 'Noto Naskh Arabic', 'DejaVu Sans', Arial, sans-serif; font-size: 11px; color: #1a1a2e; }
     .ar { direction: rtl; unicode-bidi: embed; }
-    header { border-bottom: 3px double #1f3a5f; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-start; }
-    header .sys { font-size: 16px; font-weight: bold; color: #1f3a5f; }
+    header { border-bottom: 3px double #2e5578; padding-bottom: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: flex-start; }
+    header .sys { font-size: 16px; font-weight: bold; color: #2e5578; }
     header .sys .ar { font-size: 14px; display: block; }
     header .meta { text-align: right; font-size: 10px; line-height: 1.7; }
     .rptno { font-size: 14px; font-weight: bold; letter-spacing: 1px; }
-    h2 { background: #eef2f7; border-inline-start: 4px solid #1f3a5f; padding: 5px 8px; font-size: 12px; display: flex; justify-content: space-between; margin: 14px 0 6px; }
+    h2 { background: #eef4f9; border-inline-start: 4px solid #2e5578; padding: 5px 8px; font-size: 12px; display: flex; justify-content: space-between; margin: 14px 0 6px; }
     table.fields { width: 100%; border-collapse: collapse; }
     table.fields td { border: 1px solid #d7dde5; padding: 5px 8px; vertical-align: top; }
     td.label { width: 34%; background: #f8fafc; font-weight: 600; }
     td.label .ar { font-weight: 400; color: #555; }
     table.inner { width: 100%; border-collapse: collapse; font-size: 10px; }
     table.inner th, table.inner td { border: 1px solid #cfd6df; padding: 3px 6px; text-align: center; }
-    table.inner th { background: #eef2f7; }
+    table.inner th { background: #eef4f9; }
     .empty { color: #999; }
-    footer { margin-top: 22px; border-top: 2px solid #1f3a5f; padding-top: 10px; display: flex; justify-content: space-between; align-items: flex-end; }
+    footer { margin-top: 22px; border-top: 2px solid #2e5578; padding-top: 10px; display: flex; justify-content: space-between; align-items: flex-end; }
     footer .appr { font-size: 10px; line-height: 1.8; }
     footer img { width: 92px; height: 92px; }
     .qrhint { font-size: 8px; color: #666; text-align: center; }
