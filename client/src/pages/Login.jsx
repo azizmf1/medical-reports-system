@@ -27,21 +27,36 @@ export default function Login() {
   };
 
   return (
-    <div className="login-wrap">
-      <form className="login-box" onSubmit={submit}>
-        <h1>{t('app_title')}</h1>
-        <ErrorAlert error={error} onClose={() => setError(null)} />
-        <label className="f"><span>{t('username')}</span>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} autoFocus />
-        </label>
-        <label className="f"><span>{t('password')}</span>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <button className="btn" style={{ width: '100%' }} disabled={busy}>{t('login')}</button>
-        <div style={{ textAlign: 'center', marginTop: 12 }}>
+    <div className="login-split">
+      <div className="login-hero">
+        <div className="login-brand">
+          <span className="login-brand-mark">✚</span>
+          <span className="login-brand-name">{t('app_title')}</span>
+        </div>
+        <div className="login-hero-card">
+          <h2>{t('login_tagline_title')}</h2>
+          <p>{t('login_tagline_text')}</p>
+        </div>
+        <div className="login-hero-footer">{t('login_footer')}</div>
+      </div>
+
+      <div className="login-form-side">
+        <div className="login-form-top">
           <button type="button" className="btn secondary small" onClick={toggle}>{t('language')}</button>
         </div>
-      </form>
+        <form className="login-form" onSubmit={submit}>
+          <h1>{t('login')}</h1>
+          <div className="login-divider" />
+          <ErrorAlert error={error} onClose={() => setError(null)} />
+          <label className="f"><span>{t('username')}</span>
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} autoFocus autoComplete="username" />
+          </label>
+          <label className="f"><span>{t('password')}</span>
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
+          </label>
+          <button className="btn login-submit" disabled={busy}>{t('login_button')}</button>
+        </form>
+      </div>
     </div>
   );
 }

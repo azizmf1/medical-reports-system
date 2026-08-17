@@ -1,6 +1,10 @@
 {
   "app_title": "Medical Reports Management System",
   "login": "Sign in",
+  "login_button": "Sign in",
+  "login_tagline_title": "Integration & Reliability",
+  "login_tagline_text": "A unified source for medical report services through integration between health facilities and relevant entities.",
+  "login_footer": "Medical Reports Management System © 2026",
   "username": "Username",
   "password": "Password",
   "logout": "Sign out",
