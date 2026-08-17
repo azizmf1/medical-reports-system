@@ -3,11 +3,9 @@
 services:
   - type: web
     name: mrms-server
-    runtime: node
+    runtime: docker
     plan: free
-    rootDir: server
-    buildCommand: npm install && npx playwright install --with-deps chromium
-    startCommand: node src/index.js
+    dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health
     envVars:
       - key: JWT_SECRET
