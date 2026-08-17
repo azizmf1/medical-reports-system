@@ -18,6 +18,17 @@ import publicRoutes from './routes/publicRoutes.js';
 import simulatorRoutes from './routes/simulator.js';
 import uploadRoutes from './routes/uploads.js';
 
+// Convenience for hosted demos (e.g. Render free tier without a persistent
+// disk): seed automatically when the database is empty and AUTO_SEED=true.
+if (process.env.AUTO_SEED === 'true') {
+  const { db } = await import('./db.js');
+  const count = db.prepare('SELECT COUNT(*) AS c FROM users').get().c;
+  if (count === 0) {
+    console.log('AUTO_SEED: empty database — seeding…');
+    await import('./seed.js');
+  }
+}
+
 const app = express();
 app.set('trust proxy', true);
 app.use(cors());

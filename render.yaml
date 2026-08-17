@@ -1,0 +1,25 @@
+# Render blueprint for the MRMS backend (server only — host the client on Vercel).
+# One-click: https://dashboard.render.com/blueprints → "New Blueprint Instance"
+services:
+  - type: web
+    name: mrms-server
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npx playwright install --with-deps chromium
+    startCommand: node src/index.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: VERIFY_SECRET
+        generateValue: true
+      - key: AUTO_SEED
+        value: "true"
+      # Set this to your Vercel client URL (e.g. https://mrms.vercel.app) so QR
+      # codes and verification links open the deployed SPA.
+      - key: CLIENT_BASE_URL
+        sync: false
+# NOTE: the free plan has no persistent disk — the SQLite database resets on
+# each deploy/restart and AUTO_SEED re-creates the demo data. For persistence,
+# switch to a paid plan, add a disk mounted at /data, and set DB_PATH=/data/mrms.db.

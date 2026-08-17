@@ -2,6 +2,7 @@
 import bcrypt from 'bcryptjs';
 import { db } from './db.js';
 import { verificationHash } from './services/verification.js';
+import { PUBLIC_BASE_URL } from './config.js';
 
 const PASSWORD = 'Passw0rd!';
 const hash = bcrypt.hashSync(PASSWORD, 10);
@@ -35,7 +36,7 @@ const fac3 = insertFacility.run('DMM01', 'Dammam Medical Complex', 'مجمع ا�
 const ent1 = db.prepare(
   'INSERT INTO entities (code, name_en, name_ar, status, push_enabled, pull_enabled, push_url, push_secret) VALUES (?,?,?,?,?,?,?,?)'
 ).run('SIM-PUSH', 'Simulator Push Entity', 'جهة الدفع التجريبية', 'active', 1, 0,
-  'http://localhost:4000/api/simulator/webhook', 'sim-secret-123').lastInsertRowid;
+  `${PUBLIC_BASE_URL}/api/simulator/webhook`, 'sim-secret-123').lastInsertRowid;
 const ent2 = db.prepare(
   'INSERT INTO entities (code, name_en, name_ar, status, push_enabled, pull_enabled, push_url, push_secret) VALUES (?,?,?,?,?,?,?,?)'
 ).run('MOH-PULL', 'Ministry Inquiry Entity', 'جهة الاستعلام الوزارية', 'active', 0, 1, null, null).lastInsertRowid;

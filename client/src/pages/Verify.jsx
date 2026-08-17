@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useI18n } from '../i18n/index.jsx';
 import { fmtDate } from '../components/common.jsx';
+import { API_BASE } from '../api.js';
 
 // Public verification page (no login). Shows only validity metadata — never
 // medical field data; examinee ID is masked server-side.
@@ -12,7 +13,7 @@ export default function Verify() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    fetch(`/api/public/verify/${encodeURIComponent(reportNumber)}?h=${encodeURIComponent(params.get('h') || '')}`)
+    fetch(`${API_BASE}/api/public/verify/${encodeURIComponent(reportNumber)}?h=${encodeURIComponent(params.get('h') || '')}`)
       .then((r) => r.json())
       .then(setResult)
       .catch(() => setResult({ result: 'Invalid' }));

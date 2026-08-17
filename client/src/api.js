@@ -1,3 +1,7 @@
+// Backend base URL. Empty in local dev (Vite proxies /api to :4000); set
+// VITE_API_URL to the deployed server URL when hosting the client separately.
+export const API_BASE = import.meta.env.VITE_API_URL || '';
+
 let token = localStorage.getItem('mrms_token') || null;
 
 export function setToken(t) {
@@ -19,7 +23,7 @@ export class ApiError extends Error {
 }
 
 export async function api(method, path, body) {
-  const res = await fetch(path, {
+  const res = await fetch(`${API_BASE}${path}`, {
     method,
     headers: {
       ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}),
@@ -33,7 +37,7 @@ export async function api(method, path, body) {
 }
 
 export async function downloadPdf(reportId, reportNumber) {
-  const res = await fetch(`/api/reports/${reportId}/pdf`, {
+  const res = await fetch(`${API_BASE}/api/reports/${reportId}/pdf`, {
     headers: { Authorization: `Bearer ${token}` },
   });
   if (!res.ok) throw new ApiError(res.status, await res.json().catch(() => null));
@@ -49,7 +53,7 @@ export async function downloadPdf(reportId, reportNumber) {
 export async function uploadFile(file) {
   const fd = new FormData();
   fd.append('file', file);
-  const res = await fetch('/api/uploads', {
+  const res = await fetch(`${API_BASE}/api/uploads`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${token}` },
     body: fd,

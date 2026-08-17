@@ -11,7 +11,8 @@ export const PORT = Number(process.env.PORT || 4000);
 // ASSUMPTION: secrets default to dev values; override via env in real deployments.
 export const JWT_SECRET = process.env.JWT_SECRET || 'mrms-dev-jwt-secret-change-me';
 export const VERIFY_SECRET = process.env.VERIFY_SECRET || 'mrms-dev-verify-secret-change-me';
-export const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || `http://localhost:${PORT}`;
+// RENDER_EXTERNAL_URL is provided automatically by Render deployments.
+export const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
 // Base URL of the SPA, used inside QR codes so the verification page opens in the client app.
 export const CLIENT_BASE_URL = process.env.CLIENT_BASE_URL || 'http://localhost:5173';
 
