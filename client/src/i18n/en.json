@@ -5,6 +5,8 @@
   "login_tagline_title": "Integration & Reliability",
   "login_tagline_text": "A unified source for medical report services through integration between health facilities and relevant entities.",
   "login_footer": "Medical Reports Management System © 2026",
+  "login_link_guide": "User Guide",
+  "login_link_privacy": "Privacy Policy & Terms of Use",
   "username": "Username",
   "password": "Password",
   "logout": "Sign out",

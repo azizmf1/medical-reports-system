@@ -28,18 +28,7 @@ export default function Login() {
 
   return (
     <div className="login-split">
-      <div className="login-hero">
-        <div className="login-brand">
-          <span className="login-brand-mark">✚</span>
-          <span className="login-brand-name">{t('app_title')}</span>
-        </div>
-        <div className="login-hero-card">
-          <h2>{t('login_tagline_title')}</h2>
-          <p>{t('login_tagline_text')}</p>
-        </div>
-        <div className="login-hero-footer">{t('login_footer')}</div>
-      </div>
-
+      {/* Form side — appears on the right in RTL (first flex child) */}
       <div className="login-form-side">
         <div className="login-form-top">
           <button type="button" className="btn secondary small" onClick={toggle}>{t('language')}</button>
@@ -56,6 +45,28 @@ export default function Login() {
           </label>
           <button className="btn login-submit" disabled={busy}>{t('login_button')}</button>
         </form>
+      </div>
+
+      {/* Hero side — building imagery effect with blue overlay */}
+      <div className="login-hero">
+        <div className="login-brand">
+          <span className="login-brand-name">{t('app_title')}</span>
+          <span className="login-brand-mark">✚</span>
+        </div>
+        <div className="login-hero-card">
+          <h2>{t('login_tagline_title')}</h2>
+          <p>{t('login_tagline_text')}</p>
+        </div>
+        <div className="login-hero-dots">
+          <span /><span className="on" /><span />
+        </div>
+        <div className="login-hero-footer">
+          <div className="login-hero-links">
+            <a href="#" onClick={(e) => e.preventDefault()}>{t('login_link_guide')}</a>
+            <a href="#" onClick={(e) => e.preventDefault()}>{t('login_link_privacy')}</a>
+          </div>
+          {t('login_footer')}
+        </div>
       </div>
     </div>
   );
